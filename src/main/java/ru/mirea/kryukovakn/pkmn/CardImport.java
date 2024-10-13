@@ -82,7 +82,7 @@ public class CardImport {
         Card card = null;
         try (FileInputStream fileIn = new FileInputStream(filePath);
              ObjectInputStream in = new ObjectInputStream(fileIn)) {
-            card = (Card) in.readObject(); // Десериализация объекта Card
+            card = (Card) in.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
