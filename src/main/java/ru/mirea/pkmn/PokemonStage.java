@@ -1,4 +1,4 @@
-package ru.mirea.kryukovakn.pkmn;
+package ru.mirea.pkmn;
 
 public enum PokemonStage {
     BASIC,

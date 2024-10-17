@@ -1,4 +1,4 @@
-package ru.mirea.kryukovakn.pkmn;
+package ru.mirea.pkmn;
 
 
 import java.io.Serializable;
@@ -9,7 +9,7 @@ public class Card implements Serializable {
     private PokemonStage pokemonStage;
     private String name;
     private int hp;
-    private EnergyType energyType;
+    private EnergyType pokemonType;
     private Card evolvesFrom;
     private List<AttackSkill> skills;
     private EnergyType weaknessType;
@@ -18,12 +18,13 @@ public class Card implements Serializable {
     private String gameSet;
     private char regulationMark;
     private Student pokemonOwner;
+    public static final long serialVersionUID = 1L;
 
-    public Card(PokemonStage pokemonStage, String name, int hp, EnergyType energyType, Card evolvesFrom, List<AttackSkill> skills, EnergyType weaknessType, EnergyType resistanceType, String retreatCost, String gameSet, char regulationMark, Student pokemonOwner) {
+    public Card(PokemonStage pokemonStage, String name, int hp, EnergyType pokemonType, Card evolvesFrom, List<AttackSkill> skills, EnergyType weaknessType, EnergyType resistanceType, String retreatCost, String gameSet, char regulationMark, Student pokemonOwner) {
         this.pokemonStage = pokemonStage;
         this.name = name;
         this.hp = hp;
-        this.energyType = energyType;
+        this.pokemonType = pokemonType;
         this.evolvesFrom = evolvesFrom;
         this.resistanceType = resistanceType;
         this.weaknessType = weaknessType;
@@ -62,12 +63,12 @@ public class Card implements Serializable {
         this.hp = hp;
     }
 
-    public EnergyType getEnergyType() {
-        return energyType;
+    public EnergyType getPokemonType() {
+        return pokemonType;
     }
 
-    public void setEnergyType(EnergyType energyType) {
-        this.energyType = energyType;
+    public void setPokemonType(EnergyType pokemonType) {
+        this.pokemonType = pokemonType;
     }
 
     public Card getEvolvesFrom() {
@@ -136,19 +137,34 @@ public class Card implements Serializable {
 
     @Override
     public String toString() {
-        return "Карта покемона" + "\n" +
-                "Стадия: " + pokemonStage + "\n" +
-                "Имя покемона: " + name +  "\n" +
-                "ХП: " + hp + "\n" +
-                "Тип покемона: " + energyType + "\n" +
-                "Из какого покемона эволюционирует: " + (evolvesFrom != null ? evolvesFrom.getName() : "None") + "\n" +
-                "Способности атак: " + skills + "\n" +
-                "Тип слабости: " + (weaknessType != null ? weaknessType : "None") + "\n" +
-                "Тип сопротивления: " + (resistanceType != null ? resistanceType : "None") + "\n" +
-                "Цена побега: " + retreatCost + "\n" +
-                "Название сета: " + gameSet + "\n" +
-                "Отметка легальности: " + regulationMark + "\n" +
-                "Владелец карты: " + pokemonOwner + "\n";
+
+        StringBuilder result = new StringBuilder();
+
+        result.append("Карта покемона").append("\n")
+                .append("Стадия: ").append(pokemonStage).append("\n")
+                .append("Имя покемона: ").append(name).append("\n")
+                .append("ХП: ").append(hp).append("\n")
+                .append("Тип покемона: ").append(pokemonType).append("\n")
+                .append("Способности атак: ").append(skills).append("\n")
+                .append("Тип слабости: ").append(weaknessType != null ? weaknessType : "-").append("\n")
+                .append("Тип сопротивления: ").append(resistanceType != null ? resistanceType : "-").append("\n")
+                .append("Цена побега: ").append(retreatCost).append("\n")
+                .append("Название сета: ").append(gameSet).append("\n")
+                .append("Отметка легальности: ").append(regulationMark).append("\n")
+                .append(pokemonOwner != null ? "Владелец карты: " + pokemonOwner + "\n" : "");
+
+        if (evolvesFrom != null) {
+            result.append("\n")
+                    .append("\033[4;37mПредшественник:\033[0m").append("\n")
+                    .append(evolvesFrom.toString());
+        } else {
+            result.append("Не эволюционирует.\n");
+        }
+
+        return result.toString();
+
     }
+
+
 
 }

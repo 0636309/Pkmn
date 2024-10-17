@@ -3,7 +3,7 @@ Glastrier
 130
 WATER
 -
-2 / Freeze Down / 40,2 / Wild Tackle / 130
+2 / Freeze Down / 40,2W / Wild Tackle / 130
 METAL
 -
 2
