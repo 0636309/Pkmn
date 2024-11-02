@@ -57,7 +57,7 @@ public class AttackSkill implements Serializable {
     public String toString() {
         return
                 "цена: " + cost + ", " +
-                //", описание:" + description +
+                "описание: " + description +
                 "название: " + name + ", " +
                 "урон: " + damage;
     }

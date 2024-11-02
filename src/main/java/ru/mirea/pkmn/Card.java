@@ -19,8 +19,9 @@ public class Card implements Serializable {
     private char regulationMark;
     private Student pokemonOwner;
     public static final long serialVersionUID = 1L;
+    public String number;
 
-    public Card(PokemonStage pokemonStage, String name, int hp, EnergyType pokemonType, Card evolvesFrom, List<AttackSkill> skills, EnergyType weaknessType, EnergyType resistanceType, String retreatCost, String gameSet, char regulationMark, Student pokemonOwner) {
+    public Card(PokemonStage pokemonStage, String name, int hp, EnergyType pokemonType, Card evolvesFrom, List<AttackSkill> skills, EnergyType weaknessType, EnergyType resistanceType, String retreatCost, String gameSet, String number, char regulationMark, Student pokemonOwner) {
         this.pokemonStage = pokemonStage;
         this.name = name;
         this.hp = hp;
@@ -33,6 +34,7 @@ public class Card implements Serializable {
         this.retreatCost = retreatCost;
         this.regulationMark = regulationMark;
         this.pokemonOwner = pokemonOwner;
+        this.number = number;
     }
 
     public Card() {
@@ -135,12 +137,16 @@ public class Card implements Serializable {
         this.pokemonOwner = pokemonOwner;
     }
 
+    public String getNumber() { return number; }
+
+    public void setNumber(String number) { this.number = number; }
+
     @Override
     public String toString() {
 
         StringBuilder result = new StringBuilder();
 
-        result.append("Карта покемона").append("\n")
+        result.append("\u001b[38;5;183mКарта покемона\u001b[38;5;15m").append("\n")
                 .append("Стадия: ").append(pokemonStage).append("\n")
                 .append("Имя покемона: ").append(name).append("\n")
                 .append("ХП: ").append(hp).append("\n")
@@ -150,6 +156,7 @@ public class Card implements Serializable {
                 .append("Тип сопротивления: ").append(resistanceType != null ? resistanceType : "-").append("\n")
                 .append("Цена побега: ").append(retreatCost).append("\n")
                 .append("Название сета: ").append(gameSet).append("\n")
+                .append("Номер карты в сете: ").append(number).append("\n")
                 .append("Отметка легальности: ").append(regulationMark).append("\n")
                 .append(pokemonOwner != null ? "Владелец карты: " + pokemonOwner + "\n" : "");
 
@@ -158,7 +165,7 @@ public class Card implements Serializable {
                     .append("\033[4;37mПредшественник:\033[0m").append("\n")
                     .append(evolvesFrom.toString());
         } else {
-            result.append("Не эволюционирует.\n");
+            result.append("Не имеет предка.\n");
         }
 
         return result.toString();

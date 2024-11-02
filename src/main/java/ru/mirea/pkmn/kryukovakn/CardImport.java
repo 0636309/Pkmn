@@ -1,14 +1,16 @@
 package ru.mirea.pkmn.kryukovakn;
 
 import ru.mirea.pkmn.*;
-
+import ru.mirea.pkmn.kryukovakn.web.http.PkmnHttpClient;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class CardImport {
     private String filePath;
     public static final long serialVersionUID = 1L;
+
 
     public CardImport(String filePath) {
         this.filePath = filePath;
@@ -35,14 +37,17 @@ public class CardImport {
                 skills.add(new AttackSkill(abilityParts[1].trim(), "", abilityParts[0].trim(), Integer.parseInt(abilityParts[2].trim())));
             }
             card.setSkills(skills);
+
             String weaknessLine = br.readLine().trim();
             card.setWeaknessType(weaknessLine.equals("NO") || weaknessLine.equals("-") || weaknessLine.isEmpty() ? null : EnergyType.valueOf(weaknessLine.toUpperCase()));
             String resistanceLine = br.readLine().trim();
             card.setResistanceType(resistanceLine.equals("NO") || resistanceLine.equals("-") || resistanceLine.isEmpty() ? null : EnergyType.valueOf(resistanceLine.toUpperCase()));
             card.setRetreatCost(br.readLine());
             card.setGameSet(br.readLine());
+            card.setNumber(br.readLine());
             card.setRegulationMark(br.readLine().charAt(0));
             card.setPokemonOwner(parseOwner(br.readLine()));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,9 +80,10 @@ public class CardImport {
             evolvesFromCard.setResistanceType(resistanceLine.equals("NO") || resistanceLine.equals("-") || resistanceLine.isEmpty() ? null : EnergyType.valueOf(resistanceLine.toUpperCase()));
             evolvesFromCard.setRetreatCost(br.readLine());
             evolvesFromCard.setGameSet(br.readLine());
+            evolvesFromCard.setNumber(br.readLine().trim());
             evolvesFromCard.setRegulationMark(br.readLine().trim().charAt(0));
-            //evolvesFromCard.setPokemonOwner(parseOwner(br.readLine()));
 
+            //evolvesFromCard.setPokemonOwner(parseOwner(br.readLine()));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -10,7 +10,7 @@ public class Student implements Serializable {
     private String group;
     public static final long serialVersionUID = 1L;
 
-    public Student(String firstName, String surName, String familyName, String group) {
+    public Student(String familyName,String firstName, String surName,  String group) {
         this.firstName = firstName;
         this.surName = surName;
         this.familyName = familyName;
@@ -56,9 +56,10 @@ public class Student implements Serializable {
     @Override
     public String toString() {
         return
+                familyName + " " +
                 firstName + " " +
-                surName + " " +
-                familyName + ", " +
+                surName + ", " +
+
                 group;
     }
 }

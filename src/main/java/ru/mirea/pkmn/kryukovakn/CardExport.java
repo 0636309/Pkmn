@@ -15,6 +15,9 @@ public class CardExport {
              ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             out.writeObject(card);
             System.out.println("\u001b[38;5;183mКарта успешно сохранена в файл: " + fileName + "\u001b[38;5;183m\n");
+            out.flush();
+            out.close();
+            fileOut.close();
         } catch (IOException e) {
             System.out.println("Ошибка при сериализации.");
             e.printStackTrace();
