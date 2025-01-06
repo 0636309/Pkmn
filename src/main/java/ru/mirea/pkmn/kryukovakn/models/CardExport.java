@@ -1,6 +1,4 @@
-package ru.mirea.pkmn.kryukovakn;
-
-import ru.mirea.pkmn.Card;
+package ru.mirea.pkmn.kryukovakn.models;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

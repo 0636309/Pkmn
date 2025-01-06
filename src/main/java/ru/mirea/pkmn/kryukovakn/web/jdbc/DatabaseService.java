@@ -1,9 +1,8 @@
 package ru.mirea.pkmn.kryukovakn.web.jdbc;
 
-import ru.mirea.pkmn.Card;
-import ru.mirea.pkmn.Student;
+import ru.mirea.pkmn.kryukovakn.models.Card;
+import ru.mirea.pkmn.kryukovakn.models.Student;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public interface DatabaseService {

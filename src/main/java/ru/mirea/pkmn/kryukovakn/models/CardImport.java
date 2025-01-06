@@ -1,11 +1,8 @@
-package ru.mirea.pkmn.kryukovakn;
+package ru.mirea.pkmn.kryukovakn.models;
 
-import ru.mirea.pkmn.*;
-import ru.mirea.pkmn.kryukovakn.web.http.PkmnHttpClient;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class CardImport {
     private String filePath;

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.postgresql.util.PGobject;
-import ru.mirea.pkmn.*;
+import ru.mirea.pkmn.kryukovakn.models.*;
 import ru.mirea.pkmn.kryukovakn.web.http.PkmnHttpClient;
 
 
